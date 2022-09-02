@@ -110,8 +110,7 @@ CHANNELS = {
 }
 
 bot = discum.Client(token=os.getenv("USER"), log=False)
-
-
+    
 @bot.gateway.command
 def on_message(resp):
     # ready_supplemental is sent after ready
