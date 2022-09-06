@@ -11,10 +11,9 @@ load_dotenv()
 prefix = 'https://cdn.discordapp.com/'
 avatar = 'avatars/{user_id}/{user_avatar}.png'
 hooks = {
-    'TA': [os.environ["TA_HOOK"], os.environ["ORI_TA"]],
-    'TR': [os.environ["TRADING_HOOK"], os.environ["ORI_TRADING"]],
-    'DAILY': [os.environ["DAILY_HOOK"], os.environ["ORI_DAILY"]],
-    'PUBLIC': [os.environ["PUBLIC_HOOK"], os.environ["ORI_PUB"]],
+    'TA': [os.environ["TA_CN"], os.environ["TA"]],
+    'TR': [os.environ["VIVIAN_TRADE_CN"], os.environ["VIVIAN_TRADE"]],
+    'DAILY': [os.environ["VIVIAN_DAILY_CN"], os.environ["VIVIAN_DAILY"]],
     'SILVERBAY_ANNOUNCE': [os.environ['SILVERBAY_HOOK']],
     'KUO': [os.environ['FUPAN_HOOK'] + '?thread_id=998336868913528944'],
     'SKRRA': [os.environ['FUPAN_HOOK'] + '?thread_id=1006216000586403981'],
@@ -23,94 +22,33 @@ hooks = {
 }
 
 CHANNELS = {
-    '917568228367171614': {
-        'name': "TA-pablo-on-chain",
-        'hooks': hooks['TA']
-    },
-    '912549044805566584': {
-        'name': "TA-pulkit",
-        'hooks': hooks['TA']
-    },
-    '912549119023792128': {
-        'name': "TA-asad",
-        'hooks': hooks['TA']
-    },
-    '914234223248932894': {
-        'name': "TA-surja",
-        'hooks': hooks['TA']
-    },
-    '945769733729452122': {
-        'name': "TA-moussa",
-        'hooks': hooks['TA']
-    },
-    '957322015671484456': {
-        'name': "TA-lucifer",
-        'hooks': hooks['TA']
-    },
-    '966717040989708398': {
-        'name': "TA-kayler",
-        'hooks': hooks['TA']
-    },
-    '996773096587526225': {
-        'name': "TA-kingpincrypto",
-        'hooks': hooks['TA']
-    },
-    '970807197758005298': {
-        'name': "TR-swing",
-        'hooks': hooks['TR']
-    },
-    '970807236203003905': {
-        'name': "TR-scalp",
-        'hooks': hooks['TR']
-    },
-    '922210237337960489': {
-        'name': "TR-idea",
-        'hooks': hooks['TR']
-    },
-    '938996765921792050': {
-        'name': "TR-lesson",
-        'hooks': hooks['TR']
-    },
-    '898579005232521286': {
-        'name': "DAILY-BTC",
-        'hooks': hooks['DAILY']
-    },
-    '899394668662505502': {
-        'name': "DAILY-ETH",
-        'hooks': hooks['DAILY']
-    },
-    '930970372726222898': {
-        'name': "DAILY-NEWS",
-        'hooks': hooks['DAILY']
-    },
-    '919228190097043476': {
-        'name': "chat",
-        'hooks': hooks['PUBLIC']
-    },
-    '1004963672826847313': {
-        'name': 'KUO',
-        'hooks': hooks['KUO']
-    },
-    '913054223460102205': {
-        'name': "SILVERBAY_ANNOUNCE",
-        'hooks': hooks['SILVERBAY_ANNOUNCE']
-    },
-    '1000276250255949844': {
-        'name': 'SKRRA',
-        'hooks': hooks['SKRRA']
-    },
-    '992093748278341672': {
-        'name': 'QIE',
-        'hooks': hooks['QIE']
-    },
-    '1006214862151635006': {
-        'name': 'DORCAS',
-        'hooks': hooks['DORCAS']
-    }
+    # bc sniper
+    '917568228367171614': {'description': "TA-eazy12k", 'hooks': hooks['TA']},
+    '912549044805566584': {'description': "TA-pulkit", 'hooks': hooks['TA']},
+    '912549119023792128': {'description': "TA-asad", 'hooks': hooks['TA']},
+    '914234223248932894': {'description': "TA-surja", 'hooks': hooks['TA']},
+    '945769733729452122': {'description': "TA-moussa", 'hooks': hooks['TA']},
+    '957322015671484456': {'description': "TA-lucifer", 'hooks': hooks['TA']},
+    '966717040989708398': {'description': "TA-kayler", 'hooks': hooks['TA']},
+    '996773096587526225': {'description': "TA-kingpincrypto", 'hooks': hooks['TA']},
+    '970807197758005298': {'description': "TR-swing", 'hooks': hooks['TR']},
+    '970807236203003905': {'description': "TR-scalp", 'hooks': hooks['TR']},
+    '922210237337960489': {'description': "TR-idea", 'hooks': hooks['TR']},
+    '938996765921792050': {'description': "TR-lesson", 'hooks': hooks['TR']},
+    '898579005232521286': {'description': "DAILY-BTC", 'hooks': hooks['DAILY']},
+    '899394668662505502': {'description': "DAILY-ETH", 'hooks': hooks['DAILY']},
+    '930970372726222898': {'description': "DAILY-NEWS", 'hooks': hooks['DAILY']},
+    # coop
+    '1004963672826847313': {'description': 'KUO', 'hooks': hooks['KUO']},
+    '913054223460102205': {'description': "SILVERBAY_ANNOUNCE", 'hooks': hooks['SILVERBAY_ANNOUNCE']},
+    '1000276250255949844': {'description': 'SKRRA', 'hooks': hooks['SKRRA']},
+    '992093748278341672': {'description': 'QIE', 'hooks': hooks['QIE']},
+    '1006214862151635006': {'description': 'DORCAS', 'hooks': hooks['DORCAS']}
 }
 
-bot = discum.Client(token=os.getenv("USER"), log=False)
-    
+bot = discum.Client(token=os.getenv('USER'))
+
+
 @bot.gateway.command
 def on_message(resp):
     # ready_supplemental is sent after ready
@@ -120,14 +58,13 @@ def on_message(resp):
                                           user["discriminator"]))
     if resp.event.message:
         m = resp.raw['d']
-        # because DMs are technically channels too
         guildID = m["guild_id"] if "guild_id" in m else None
         if guildID == "895412557668548608":
             blockchain_sniper(m)
-        if guildID == '913012487841001502':
-            silverbay(m)
-        if guildID == '965110788618588200':
-            kolunite(m)
+        # elif guildID == '913012487841001502':
+        #     silverbay(m)
+        # elif guildID == '965110788618588200':
+        #     kolunite(m)
 
 
 def kolunite(m):
@@ -229,5 +166,6 @@ def add_attachments(msg):
         for att in msg["attachments"]:
             attachments += "\n" + att["url"]
     return embeds, attachments
+
 
 bot.gateway.run()
