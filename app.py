@@ -14,7 +14,6 @@ hooks = {
     'TA': [os.environ["TA_CN"], os.environ["TA"]],
     'TR': [os.environ["VIVIAN_TRADE_CN"], os.environ["VIVIAN_TRADE"]],
     'DAILY': [os.environ["VIVIAN_DAILY_CN"], os.environ["VIVIAN_DAILY"]],
-    'SILVERBAY_ANNOUNCE': [os.environ['SILVERBAY_HOOK']],
     'KUO': [os.environ['FUPAN_HOOK'] + '?thread_id=998336868913528944'],
     'SKRRA': [os.environ['FUPAN_HOOK'] + '?thread_id=1006216000586403981'],
     'QIE': [os.environ['FUPAN_HOOK'] + '?thread_id=1006216102856118362'],
