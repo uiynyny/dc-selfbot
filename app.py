@@ -14,10 +14,10 @@ hooks = {
     'TA': [os.environ["TA_CN"], os.environ["TA"]],
     'TR': [os.environ["VIVIAN_TRADE_CN"], os.environ["VIVIAN_TRADE"]],
     'DAILY': [os.environ["VIVIAN_DAILY_CN"], os.environ["VIVIAN_DAILY"]],
-    'KUO': [os.environ['FUPAN_HOOK'] + '?thread_id=998336868913528944'],
-    'SKRRA': [os.environ['FUPAN_HOOK'] + '?thread_id=1006216000586403981'],
-    'QIE': [os.environ['FUPAN_HOOK'] + '?thread_id=1006216102856118362'],
-    'DORCAS': [os.environ['FUPAN_HOOK'] + '?thread_id=1006215829114851328']
+    # 'KUO': [os.environ['FUPAN_HOOK'] + '?thread_id=998336868913528944'],
+    # 'SKRRA': [os.environ['FUPAN_HOOK'] + '?thread_id=1006216000586403981'],
+    # 'QIE': [os.environ['FUPAN_HOOK'] + '?thread_id=1006216102856118362'],
+    # 'DORCAS': [os.environ['FUPAN_HOOK'] + '?thread_id=1006215829114851328']
 }
 
 CHANNELS = {
@@ -38,11 +38,11 @@ CHANNELS = {
     '899394668662505502': {'description': "DAILY-ETH", 'hooks': hooks['DAILY']},
     '930970372726222898': {'description': "DAILY-NEWS", 'hooks': hooks['DAILY']},
     # coop
-    '1004963672826847313': {'description': 'KUO', 'hooks': hooks['KUO']},
-    '913054223460102205': {'description': "SILVERBAY_ANNOUNCE", 'hooks': hooks['SILVERBAY_ANNOUNCE']},
-    '1000276250255949844': {'description': 'SKRRA', 'hooks': hooks['SKRRA']},
-    '992093748278341672': {'description': 'QIE', 'hooks': hooks['QIE']},
-    '1006214862151635006': {'description': 'DORCAS', 'hooks': hooks['DORCAS']}
+    # '1004963672826847313': {'description': 'KUO', 'hooks': hooks['KUO']},
+    # '913054223460102205': {'description': "SILVERBAY_ANNOUNCE", 'hooks': hooks['SILVERBAY_ANNOUNCE']},
+    # '1000276250255949844': {'description': 'SKRRA', 'hooks': hooks['SKRRA']},
+    # '992093748278341672': {'description': 'QIE', 'hooks': hooks['QIE']},
+    # '1006214862151635006': {'description': 'DORCAS', 'hooks': hooks['DORCAS']}
 }
 
 bot = discum.Client(token=os.getenv('USER'))
