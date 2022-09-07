@@ -103,7 +103,6 @@ def silverbay(m):
 
 
 def blockchain_sniper(m):
-    EN_MENTION = '998715559418011769'
     guildID = m["guild_id"]
     channelID = m["channel_id"]
     username = m["author"]["username"]
@@ -115,7 +114,7 @@ def blockchain_sniper(m):
     wb = get_ori_webhook(channelID)
     if wb:
         wb.username, wb.avatar_url = get_user_info(m)
-        wb.content = re.sub(r"@everyone", f"<@&{EN_MENTION}>", content)
+        wb.content = content
         wb.embeds, attach = add_attachments(m)
         wb.content += attach
         wb.execute()
