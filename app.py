@@ -122,7 +122,7 @@ def blockchain_sniper(m):
     w = get_webhook(channelID)
     if w:
         w.username, w.avatar_url = get_user_info(m)
-        w.content = translate(re.sub(r"@everyone", "everyone", content))
+        w.content = translate(re.sub(r"@everyone", " ", content))
         w.embeds, attach = add_attachments(m)
         w.content += attach
         w.execute()
