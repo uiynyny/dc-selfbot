@@ -42,7 +42,8 @@ CHANNELS = {
     # '1006214862151635006': {'description': 'DORCAS', 'hooks': hooks['DORCAS']}
 }
 
-bot = discum.Client(token=os.getenv('USER'))
+bot = discum.Client(token=os.getenv('USER'), log={
+                    "console": False, "file": False})
 
 
 @bot.gateway.command
